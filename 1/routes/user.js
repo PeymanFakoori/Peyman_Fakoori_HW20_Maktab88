@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var request_handler_1 = require("../middlewares/request.handler");
+var employee_1 = require("../controller/employee");
+var employeeRout = express_1.default.Router();
+employeeRout.post("/creat", (0, request_handler_1.requestHandler)(employee_1.newEmployee));
+employeeRout.get("/getAll", (0, request_handler_1.requestHandler)(employee_1.getAllEmployee));
+employeeRout.get("/:nationalCode", (0, request_handler_1.requestHandler)(employee_1.getById));
+employeeRout.put("/:nationalCode", (0, request_handler_1.requestHandler)(employee_1.updateEmployee));
+employeeRout.delete("/:nationalCode", (0, request_handler_1.requestHandler)(employee_1.remove));
+exports.default = employeeRout;
